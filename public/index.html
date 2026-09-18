@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>DevOps Node App</title>
+  <meta
+    name="description"
+    content="A simple Node.js application built for DevOps practice."
+  />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="/" class="logo">
+        <span class="logo-icon">⚙</span>
+        DevOps<span>Node</span>
+      </a>
+
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="/health" class="nav-button">Health Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="badge">● Ready for deployment</div>
+
+          <h1>
+            Build. Test.
+            <span>Deploy.</span>
+          </h1>
+
+          <p>
+            A lightweight Node.js application designed to help you practice
+            modern DevOps workflows, containerization, and continuous integration.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#features" class="button primary-button">
+              Explore the project
+            </a>
+
+            <a href="/health" class="button secondary-button">
+              View system status
+            </a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">terminal</span>
+          </div>
+
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> npm test</p>
+            <p class="success">✓ tests passed</p>
+            <p><span class="prompt">$</span> docker compose up</p>
+            <p class="success">✓ container running</p>
+            <p><span class="prompt">$</span> curl localhost:3000/health</p>
+            <p class="output">{ "status": "healthy" }</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Everything you need to practice</p>
+          <h2>A small project with real DevOps foundations</h2>
+          <p>
+            Learn by working with the same tools and patterns used in production
+            development environments.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Node.js API</h3>
+            <p>
+              A fast and simple HTTP server with application and health-check
+              endpoints.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🐳</div>
+            <h3>Docker Ready</h3>
+            <p>
+              Build and run the application consistently using Docker and
+              Docker Compose.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>CI Automation</h3>
+            <p>
+              Run automated tests and Docker builds with GitHub Actions on every
+              code change.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+      <div class="container workflow-content">
+        <div>
+          <p class="eyebrow">Simple workflow</p>
+          <h2>From code to deployment</h2>
+          <p>
+            Practice the complete development lifecycle with a project that is
+            easy to understand and extend.
+          </p>
+        </div>
+
+        <div class="workflow-steps">
+          <div class="step">
+            <span>01</span>
+            <div>
+              <h3>Develop</h3>
+              <p>Make changes locally and run the app in development mode.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>02</span>
+            <div>
+              <h3>Test</h3>
+              <p>Run automated tests before pushing your code.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span>03</span>
+            <div>
+              <h3>Deploy</h3>
+              <p>Build a Docker image and deploy through your pipeline.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-content">
+        <h2>Ready to start practicing?</h2>
+        <p>Run the application locally and begin improving the pipeline.</p>
+        <a href="/health" class="button primary-button">Check application status</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2025 DevOps Node App</p>
+      <p>Built with Node.js, Docker, and GitHub Actions</p>
+    </div>
+  </footer>
+</body>
+</html>
