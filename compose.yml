@@ -1,0 +1,28 @@
+services:
+  web:
+    image: nirnay2001/devops_nodejs_app:latest
+    container_name: web-app01
+    cpus: 0.5
+    mem_limit: 512m
+    ports:
+      - "80:3000"
+    volumes:
+      - mydata:/data
+    networks:
+      - app-net1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    
+volumes:
+  mydata:
+    name: mydata
+
+networks:
+  app-net1: 
+    name: app-net1 
+
+  
