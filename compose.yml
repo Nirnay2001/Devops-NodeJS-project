@@ -1,6 +1,6 @@
 services:
   web:
-    image: nirnay2001/devops_nodejs_app
+    image: nirnay2001/devops_nodejs_app:tagname
     container_name: web-app01
     cpus: 0.5
     mem_limit: 512m
