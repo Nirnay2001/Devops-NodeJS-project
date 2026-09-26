@@ -1,52 +1,29 @@
-name: Deploy Node.js App
+name: Test EC2 SSH
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  build:
+  test-ssh:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
+      - name: Test SSH Connection
+        uses: appleboy/ssh-action@v1.2.2
         with:
-          node-version: '22'
-          cache: 'npm'
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "✅ SSH connection successful!"
+            echo "EC2 hostname:"
+            hostname
 
-      - name: Install dependencies
-        run: npm ci
+            echo "Current user:"
+            whoami
 
-      - name: Run tests
-        run: npm test
+            echo "EC2 OS:"
+            cat /etc/os-release | grep PRETTY_NAME
 
-      - name: Deploy to EC2
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          EC2_HOST: ${{ secrets.EC2_HOST }}
-          EC2_USER: ${{ secrets.EC2_USER }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ec2_key
-          chmod 600 ~/.ssh/ec2_key
-
-          ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
-
-          rsync -avz --delete \
-            --exclude node_modules \
-            --exclude .git \
-            --exclude .github \
-            -e "ssh -i ~/.ssh/ec2_key" \
-            ./ "$EC2_USER@$EC2_HOST:/home/$EC2_USER/devops-node-app/"
-
-          ssh -i ~/.ssh/ec2_key "$EC2_USER@$EC2_HOST" << 'EOF'
-            cd /home/$EC2_USER/devops-node-app
-            npm ci --omit=dev
-            pm2 restart app || pm2 start src/server.js --name app
-            pm2 save
-          EOF
+            echo "Current date:"
+            date
