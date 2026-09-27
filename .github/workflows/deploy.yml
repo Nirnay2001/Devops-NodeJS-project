@@ -86,7 +86,7 @@ jobs:
 
             kubectl cluster-info
 
-            envsubst < NodejsApp-deployment.yml | kubectl apply --server-side -f -            
+            envsubst < NodejsApp-deployment.yml | kubectl apply --server-side --force-conflicts -f -            
             kubectl apply -f NodejsApp-service.yml
 
             kubectl rollout status nodejs-app-deployment --timeout=180s
