@@ -86,10 +86,10 @@ jobs:
 
             kubectl cluster-info
 
-            envsubst < NodejsApp-deployment.yml | kubectl --server-side apply -f -            
+            envsubst < NodejsApp-deployment.yml | kubectl apply -f -            
             kubectl apply -f NodejsApp-service.yml
 
-            kubectl rollout status deployment/nodejs-app-deployment --timeout=180s
+            kubectl rollout status nodejs-app-deployment --timeout=180s
 
             echo "Deployment successful"
       
