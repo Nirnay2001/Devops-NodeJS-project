@@ -30,7 +30,7 @@ spec:
           image: 474717635696.dkr.ecr.us-east-1.amazonaws.com/nodejs/app01:${IMAGE_TAG}
           env:
             - name: PORT
-              value: "3000"
+              value: 3000
           ports:
             - containerPort: PORT
           readinessProbe:
