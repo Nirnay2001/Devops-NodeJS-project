@@ -5,9 +5,7 @@ metadata:
   labels:
     app: nodejs-app
 
-env:
-  - name: PORT
-    value: 3000
+
 
 spec:
   replicas: 3
@@ -30,19 +28,22 @@ spec:
       containers:
         - name: nodejs-app-container
           image: 474717635696.dkr.ecr.us-east-1.amazonaws.com/nodejs/app01:${IMAGE_TAG}
+          env:
+            - name: PORT
+              value: "3000"
           ports:
-            - containerPort: ${PORT}
+            - containerPort: PORT
           readinessProbe:
             httpGet:
               path: /
-              port: ${PORT}
+              port: PORT
             initialDelaySeconds: 10
             periodSeconds: 5
 
           livenessProbe:
             httpGet:
               path: /
-              port: ${PORT}
+              port: PORT
             initialDelaySeconds: 15
             periodSeconds: 10  
 
