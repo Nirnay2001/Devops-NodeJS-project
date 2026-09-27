@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "NodejsApp-deployment.yml,NodejsApp-service.yml"
           target: "/home/ubuntu/Devops-NodeJS-project"
-        
+      # aws role fix 
       - name: Set up kubectl secret on EC2 instance
         uses: appleboy/ssh-action@v1.2.2
         with:
