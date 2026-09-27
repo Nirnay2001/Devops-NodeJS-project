@@ -7,16 +7,7 @@ metadata:
 
 spec:
   replicas: 3
-  readinessProbe:
-    httpGet:
-      path: /
-      port: 3000
-      periodSeconds: 5
-  livenessProbe:
-    httpGet:
-      path: /
-      port: 3000
-      periodSeconds: 10
+  
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -36,7 +27,17 @@ spec:
         - name: nodejs-app-container
           image: 474717635696.dkr.ecr.us-east-1.amazonaws.com/nodejs/app01:${IMAGE_TAG}
           ports:
-            - containerPort: 80
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+              periodSeconds: 10  
           resources:
             limits:
               memory: "256Mi"
