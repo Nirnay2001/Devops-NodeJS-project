@@ -23,15 +23,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Copy files to EC2
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "your-file-or-folder"
-          target: "/home/ubuntu/"
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
