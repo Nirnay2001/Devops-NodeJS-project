@@ -89,7 +89,7 @@ jobs:
             envsubst < NodejsApp-deployment.yml | kubectl apply --server-side --force-conflicts -f -            
             kubectl apply -f NodejsApp-service.yml
 
-            kubectl rollout status nodejs-app-deployment --timeout=180s
+            kubectl rollout status deployment/nodejs-app-deployment --timeout=180s
 
             echo "Deployment successful"
       
