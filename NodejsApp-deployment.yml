@@ -7,6 +7,16 @@ metadata:
 
 spec:
   replicas: 3
+  readiness:
+    httpGet:
+      path: /
+      port: 3000
+      periodSeconds: 5
+  liveness:
+    httpGet:
+      path: /
+      port: 3000
+      periodSeconds: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
