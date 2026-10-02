@@ -32,10 +32,7 @@ spec:
             - name: secret-volume
               mountPath: "/etc/secrets"
               readOnly: true
-          volumes:
-            - name: secret-volume
-              secret:
-                secretName: new-pass-2
+          
           env:
             - name: PORT
               value: "3000"
@@ -73,3 +70,8 @@ spec:
             requests:
               memory: "128Mi"
               cpu: "250m"
+
+      volumes:
+        - name: secret-volume 
+          secret:
+            secretName: new-pass-2
