@@ -88,6 +88,7 @@ jobs:
 
             envsubst < NodejsApp-deployment.yml | kubectl apply --server-side --force-conflicts -f -            
             kubectl apply -f NodejsApp-service.yml
+            kubectl apply -f secret-volume.yml
 
             kubectl rollout status deployment/nodejs-app-deployment --timeout=180s
 
