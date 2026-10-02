@@ -28,6 +28,11 @@ spec:
       containers:
         - name: nodejs-app-container
           image: 474717635696.dkr.ecr.us-east-1.amazonaws.com/nodejs/app01:${IMAGE_TAG}
+          volumeMounts:
+            - name: secret-volume
+              mountPath: "/etc/secrets"
+              readOnly: true
+              
           env:
             - name: PORT
               value: "3000"
