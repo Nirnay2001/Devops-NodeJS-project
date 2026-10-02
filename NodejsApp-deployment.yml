@@ -31,6 +31,17 @@ spec:
           env:
             - name: PORT
               value: "3000"
+
+            - name: USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: new-pass-2
+                  key: username
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: new-pass-2
+                  key: password
           ports:
             - containerPort: 3000
           readinessProbe:
