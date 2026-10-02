@@ -52,7 +52,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "NodejsApp-deployment.yml,NodejsApp-service.yml"
+          source: "NodejsApp-deployment.yml,NodejsApp-service.yml,secret-volume.yml"
           target: "/home/ubuntu/Devops-NodeJS-project"
       # aws role fix 
       - name: Set up kubectl secret on EC2 instance
